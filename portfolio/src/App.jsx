@@ -107,7 +107,7 @@ function App() {
                       {work.subCategories.map((subcategory) => (
                         <div key={subcategory.label}>
                           <h4 className="category">{subcategory.label}</h4>
-                          <ul>
+                          <ul className="categoryDetail">
                             {subcategory.descriptions.map((description) => (
                               <li key={description}>{description}</li>
                             ))}

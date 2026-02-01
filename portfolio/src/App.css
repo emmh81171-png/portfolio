@@ -71,13 +71,11 @@ body {
   }
 }
 
-@media (min-width: 768px) {
-  .worksButton {
+.worksButton {
     display: flex;
     justify-content: center;
     gap: 1rem;
     padding-bottom: 1rem;
-  }
 }
 
 .workCard {
@@ -96,23 +94,41 @@ body {
 }
 
 .workImage {
-  width: 50%;
+  width: 100%;
   border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+  .workImage {
+    width: 50%;
+  }
 }
 
 .category {
   text-align: center;
 }
 
+.categoryDetail {
+  text-align: left;
+}
+
 .workDetailPage {
   display: flex;
   flex-direction: column;
   text-align: center;
+  color: #000;
 }
 
 .workDetail {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 768px) {
+  .workDetail {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
 
 .tabs {
@@ -121,7 +137,15 @@ body {
   flex-direction: row;
   row-gap: 1rem;
   align-items: center;
+  gap: 1rem;
 }
+
+@media (min-width: 768px) {
+  .tabs {
+    flex-direction: row;
+  }
+}
+
 
 .skills {
   display: flex;
