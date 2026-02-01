@@ -88,10 +88,16 @@ ul {
   text-align: center;
 }
 
+.workDetailPage {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+} 
+
 .workDetail {
   display: flex;
-  text-align: left;
-} 
+  flex-direction: row;
+}
 
 .tabs {
   display: flex;
@@ -99,4 +105,15 @@ ul {
   flex-direction: row;
   row-gap: 1rem;
   align-items: center;
+}
+
+.skillIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.skillIcon {
+  width: 40px;
+  height: 40px;
 }

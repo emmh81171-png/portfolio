@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './App.css';
 import { works } from './works.js';
+import { skills } from './skills.js';
 
 function Section(props) {
   return (
@@ -26,7 +27,11 @@ function App() {
   return (
   <>
     <div className="worksButton">
-      <button onClick={() => { setShowWorks(!showWorks) }}>
+      <button onClick={() => { 
+        setShowWorks(!showWorks) 
+        setSelectedWorkId(null); 
+        setSelectedTabId("top");
+      }}>
         {showWorks ? "Worksを閉じる" : "Worksを表示する"}
       </button>
       {selectedWorkId !== null && (
@@ -57,12 +62,13 @@ function App() {
               </article>
             ) : selectedWorkId === work.id ? (
 
-              <div key={work.id} className="workDetail">
+              <div key={work.id} className="workDetailPage">
+                
+                  <h2 className="worksTitleDetail">{work.title}</h2>  
+                  
+                  <div className="workDetail">
                 <img src={imageSrc} alt={work.title} className="workImage" />
                 <div className="workInfo">
-                  <h3 className="workTitle" onClick={() => setSelectedWorkId(work.id)}>
-                    {work.title}
-                  </h3>
                 {work.tabs && (
                   <div className="tabs">
                     {work.tabs.map((tab) => (
@@ -82,6 +88,7 @@ function App() {
                       </ul>
                     </div>
                   ))}
+                  </div>              
                 </div>
               </div>
             ) : null
@@ -89,6 +96,26 @@ function App() {
         </Section >
       )
     }
+    
+        <Section className="skills">
+          {skills.map((group) => (
+            <div key={group.title} className="skillGroup">
+              <h3>{group.title}</h3>
+              <div className="skillIcons">
+              {group.items.map((item) => (
+                <img 
+                  key={item.id}
+                  src={item.icon}
+                  alt={item.name}
+                  title={item.name}
+                  className="skillIcon"
+                  />
+              ))}
+              </div>
+            </div>
+          ))}
+        </Section >
+
   </>
 );
 }
