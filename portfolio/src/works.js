@@ -2,6 +2,7 @@ export const works = [
     {
         id: "lp-1",
         "title": "塾の紹介サイト",
+        image:"/images/LP1_sp.png",
         "subCategories": [
             {
                 "label": "制作範囲",
@@ -34,6 +35,7 @@ export const works = [
     {
         id: "lp-2",
         "title": "化粧品サイト",
+        image:"/images/LP2_sp.png",
         "subCategories": [
             {
                 "label": "制作範囲",
@@ -67,6 +69,7 @@ export const works = [
     {
         id: "lp-3",
         "title": "脱毛プランサイト",
+        image:"/images/LP3_sp.png",
         "subCategories": [
             {
                 "label": "制作範囲",

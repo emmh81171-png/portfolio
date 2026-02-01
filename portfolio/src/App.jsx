@@ -5,7 +5,6 @@ import { works } from './works.js';
 function Section(props) {
   return (
     <section className={props.className}>
-      {/* <h2>{props.title}</h2> */}
       {props.children}
     </section>
   );
@@ -14,40 +13,65 @@ function Section(props) {
 function App() {
   const [showWorks, setShowWorks] = useState(true);
   const [selectedWorkId, setSelectedWorkId] = useState(null);
-
+  const [selectedTabId, setSelectedTabId] = useState("top");
+  const selectedWork = works.find(work => work.id === selectedWorkId) || null;
+  let imageSrc = null;
+  if (selectedWork)
+    if (selectedWork.tabs) {
+      const selectedTab = selectedWork.tabs.find(tab => tab.id === selectedTabId);
+      imageSrc = selectedTab?.sp;
+    } else {
+      imageSrc = selectedWork.image;
+    }
   return (
-    <>
-      <div className="worksButton">
-        <button onClick={() => { setShowWorks(!showWorks) }}>
-          {showWorks ? "Worksを閉じる" : "Worksを表示する"}
+  <>
+    <div className="worksButton">
+      <button onClick={() => { setShowWorks(!showWorks) }}>
+        {showWorks ? "Worksを閉じる" : "Worksを表示する"}
+      </button>
+      {selectedWorkId !== null && (
+        <button onClick={() => {
+          setSelectedWorkId(null)
+          setSelectedTabId("top");
+        }
+        }>
+          一覧に戻る
         </button>
-        {selectedWorkId !== null && (
-          <button onClick={() => setSelectedWorkId(null)}>
-            一覧に戻る
-          </button>
-        )}
-      </div>
+      )}
+    </div>
 
-      {
-        showWorks && (
-          <Section className="works">
-            {works.map((work) => (
+    {
+      showWorks && (
+        <Section className="works">
+          {works.map((work) => (
 
-              selectedWorkId === null  ? (
+            selectedWorkId === null ? (
 
-                <article key={work.id} className="workCard">
-                  <h3 className="workTitle" onClick={() => setSelectedWorkId(work.id)}>
-                    {work.title}
-                  </h3>
-                </article>
-              ) : selectedWorkId === work.id ? (
+              <article key={work.id} className="workCard">
+                <h3 className="workTitle" onClick={() => {
+                  setSelectedWorkId(work.id);
+                  setSelectedTabId("top");
+                }}>
+                  {work.title}
+                </h3>
+              </article>
+            ) : selectedWorkId === work.id ? (
 
               <div key={work.id} className="workDetail">
-                <img src="/images/LP1_sp.png" alt={work.title} className="workImage" />
+                <img src={imageSrc} alt={work.title} className="workImage" />
                 <div className="workInfo">
                   <h3 className="workTitle" onClick={() => setSelectedWorkId(work.id)}>
                     {work.title}
                   </h3>
+                {work.tabs && (
+                  <div className="tabs">
+                    {work.tabs.map((tab) => (
+                      <button key={tab.id} onClick={() => setSelectedTabId(tab.id)}>
+                        {tab.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
                   {work.subCategories.map((subcategory) => (
                     <div key={subcategory.label}>
                       <h4 className="category">{subcategory.label}</h4>
@@ -58,14 +82,14 @@ function App() {
                       </ul>
                     </div>
                   ))}
-                  </div>
+                </div>
               </div>
             ) : null
-            ))}
-          </Section >
-        )
-      }
-    </>
-  );
+          ))}
+        </Section >
+      )
+    }
+  </>
+);
 }
 export default App;
