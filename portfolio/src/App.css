@@ -2,6 +2,10 @@ ul {
   list-style: none;
 }
 
+body {
+  background-color: cornsilk;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -48,9 +52,20 @@ ul {
   color: #888;
 }
 
+.works {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 @media (min-width: 768px) {
   .works {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 1rem;
   }
@@ -66,11 +81,12 @@ ul {
 }
 
 .workCard {
-  border: 1px solid #e1e1e1;
+  border: 1px solid #000;
   border-radius: 8px;
   padding-inline: .5rem;
   text-align: center;
   width: 170px;
+  background-color: #000;
 }
 
 .workTitle {
@@ -92,7 +108,7 @@ ul {
   display: flex;
   flex-direction: column;
   text-align: center;
-} 
+}
 
 .workDetail {
   display: flex;
@@ -107,6 +123,34 @@ ul {
   align-items: center;
 }
 
+.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .skills {
+    flex-direction: row;
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3等分 */
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.skillTitle {
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  border: 1px solid #000;
+  color: #000;
+  background-color: cadetblue;
+
+}
+
 .skillIcons {
   display: flex;
   justify-content: center;
@@ -116,4 +160,66 @@ ul {
 .skillIcon {
   width: 40px;
   height: 40px;
+}
+
+.about {
+  padding: 4rem 1rem;
+}
+
+.aboutInner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.aboutTop {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .aboutTop {
+    flex-direction: row;
+  }
+}
+
+.aboutRight {
+  display: flex;
+  flex-direction: column;
+  /* ←右側を縦並び */
+  gap: 1rem;
+}
+
+.aboutImage img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.aboutNames {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.aboutEnName {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  color: #000;
+  font-weight: bold;
+}
+
+.aboutJaName {
+  font-size: 1.8rem;
+  margin: 0.3rem 0 1rem;
+  color: #000;
+  font-weight: bold;
+}
+
+.aboutText {
+  line-height: 1.8;
+  text-align: left;
+  color: #000;
+  font-weight: bold;
 }

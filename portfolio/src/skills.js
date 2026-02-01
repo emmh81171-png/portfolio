@@ -53,11 +53,6 @@ export const skills = [
         "title": "AI Tools",
         "items": [
             {
-                id: "chatgpt",
-                name: "ChatGPT",
-                icon: "/assets/gpt.svg"
-            },
-            {
                 id: "claude",
                 name: "Claude",
                 icon: "/assets/claude.svg"
